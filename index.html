@@ -86,16 +86,6 @@
               </ul>
             </li>
             
-            <li class="nav-item" data-level="2"><a href="#dependencies" class="nav-link">Dependencies</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="2"><a href="#setup" class="nav-link">Setup</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
             <li class="nav-item" data-level="2"><a href="#usage" class="nav-link">Usage</a>
               <ul class="nav flex-column">
               </ul>
@@ -173,12 +163,31 @@
 
 <hr />
 <h2 id="quick-start">Quick Start</h2>
+<p>RNAIndel can be executed via Docker or ran locally, downloadable via PyPI.</p>
+<h3 id="docker">Docker</h3>
 <p>We publish our latest docker builds on GitHub.  You can run the latest code base by running the following command</p>
 <pre><code>&gt; docker run --rm -v ${pwd}:/data ghcr.io/stjude/rnaindel:latest
 </code></pre>
 <p>If you want to have a more native feel, you can add an alias to your shell's rc file.</p>
 <pre><code>&gt; alias rnaindel=&quot;docker run --rm -v ${pwd}:/data ghcr.io/stjude/rnaindel:latest&quot;
-&gt; rnaindel
+</code></pre>
+<p>Note: if its the first time you are executing the <code>docker run</code> command, you will see the output of docker downloading the image</p>
+<h3 id="pypi">PyPI</h3>
+<p>Installing RNAIndel via the pip command will install the dependencies except for Java.  </p>
+<h4 id="dependencies">Dependencies</h4>
+<ul>
+<li><a href="https://www.python.org/downloads/">python&gt;=3.6.0</a><ul>
+<li><a href="https://pandas.pydata.org/">pandas&gt;=0.23.0</a> </li>
+<li><a href="http://scikit-learn.org/stable/install.html#">scikit-learn&gt;=0.20.0</a></li>
+<li><a href="https://pysam.readthedocs.io/en/latest/index.html">pysam&gt;=0.13.0</a></li>
+</ul>
+</li>
+<li><a href="https://www.java.com/en/download/">java&gt;=1.8.0</a> </li>
+</ul>
+<pre><code>&gt; pip install rnaindel
+</code></pre>
+<p>Test the installation.</p>
+<pre><code>&gt; rnaindel
 usage: rnaindel &lt;subcommand&gt; [&lt;args&gt;]
 
 subcommands are:
@@ -197,7 +206,15 @@ optional arguments:
   -h, --help  show this help message and exit
   --version   show program's version number and exit
 </code></pre>
-<p>Note: if its the first time you are executing the <code>docker run</code> command, you will see the output of docker downloading the image</p>
+<p>You can download data package (GRCh38, GRCh37) and unpack it in a convenient directory on your system. </p>
+<pre><code># GRCh38
+&gt; curl -LO http://ftp.stjude.org/pub/software/RNAIndel/data_dir_38.tar.gz
+&gt; tar -xzf data_dir_38.tar.gz
+# GRCh37
+&gt; curl -LO http://ftp.stjude.org/pub/software/RNAIndel/data_dir_37.tar.gz
+&gt; tar -xzf data_dir_37.tar.gz
+</code></pre>
+<p>Test it out!</p>
 <pre><code>❯ rnaindel analysis -i ./sample_data/inputs/sample.bam \
                       -o output.vcf \
                       -r ./sample_data/inputs/chr10.fa \
@@ -205,35 +222,14 @@ optional arguments:
 indel calling completed successfully.
 rnaindel analysis completed successfully.
 </code></pre>
-<h2 id="dependencies">Dependencies</h2>
-<ul>
-<li><a href="https://www.python.org/downloads/">python&gt;=3.6.0</a><ul>
-<li><a href="https://pandas.pydata.org/">pandas&gt;=0.23.0</a> </li>
-<li><a href="http://scikit-learn.org/stable/install.html#">scikit-learn&gt;=0.20.0</a></li>
-<li><a href="https://pysam.readthedocs.io/en/latest/index.html">pysam&gt;=0.13.0</a></li>
-</ul>
-</li>
-<li><a href="https://www.java.com/en/download/">java&gt;=1.8.0</a> </li>
-</ul>
-<h2 id="setup">Setup</h2>
-<p>Install RNAIndel. The pip command will install the dependencies except for Java.  </p>
-<pre><code>pip install rnaindel
-</code></pre>
-<p>Test the installation.</p>
-<pre><code>rnaindel -h
-</code></pre>
-<p>Download data package (<a href="http://ftp.stjude.org/pub/software/RNAIndel/data_dir_38.tar.gz">GRCh38</a>, <a href="http://ftp.stjude.org/pub/software/RNAIndel/data_dir_37.tar.gz">GRCh37</a>) and 
-unpack it in a convenient directory on your system. </p>
-<pre><code>tar xzvf data_dir_38.tar.gz  # for GRCh38
-</code></pre>
 <h2 id="usage">Usage</h2>
-<p>RNAIndel has 6 subcommands:
-* <code>analysis</code> analyze RNA-Seq data for indel discovery
-* <code>feature</code> calculate features for training
-* <code>nonsomatic</code> make a non-somatic indel panel
-* <code>reclassification</code> reclassify false positives by non-somatic panel
-* <code>recurrence</code> annotate false positives by recurrence
-* <code>training</code> train and update the models</p>
+<p>RNAIndel has 6 subcommands: <br />
+<em> <code>analysis</code> analyze RNA-Seq data for indel discovery <br />
+</em> <code>feature</code> calculate features for training <br />
+<em> <code>nonsomatic</code> make a non-somatic indel panel  <br />
+</em> <code>reclassification</code> reclassify false positives by non-somatic panel  <br />
+<em> <code>recurrence</code> annotate false positives by recurrence <br />
+</em> <code>training</code> train and update the models   </p>
 <p>Subcommands are invoked:</p>
 <pre><code>rnaindel subcommand [subcommand-specific options]
 </code></pre>
@@ -284,7 +280,7 @@ and <a href="https://github.com/ekg/freebayes">freebayes</a>. Specify the input 
 <p>RNAIndel supports <a href="./docs/filtering">custom filtering</a> to refine the predicted results.</p>
 <h2 id="contact">Contact</h2>
 <ul>
-<li>kohei.hagiwaraATstjude.org\
+<li>kohei.hagiwara[AT]stjude.org <br />
 Please let me know what your experience with RNAIndel was like (even bad comments are welcome)!</li>
 </ul>
 <h2 id="limitations">Limitations</h2>
@@ -375,5 +371,5 @@ Please let me know what your experience with RNAIndel was like (even bad comment
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2020-11-12 01:46:05.766047+00:00
+Build Date UTC : 2020-11-13 00:05:39.857532+00:00
 -->

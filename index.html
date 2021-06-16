@@ -12,18 +12,18 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/purebasic.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/purebasic.min.css">
 
         <script src="js/jquery-1.10.2.min.js" defer></script>
         <script src="js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body class="homepage">
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href=".">RNAIndel - St. Jude</a>
+                <a class="navbar-brand" href="index.html">RNAIndel - St. Jude</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -34,13 +34,13 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem active">
-                                <a href="." class="nav-link">Home</a>
+                                <a href="index.html" class="nav-link">Home</a>
                             </li>
                             <li class="navitem">
-                                <a href="filtering/" class="nav-link">Filtering</a>
+                                <a href="filtering/index.html" class="nav-link">Filtering</a>
                             </li>
                             <li class="navitem">
-                                <a href="training/" class="nav-link">Training</a>
+                                <a href="training/index.html" class="nav-link">Training</a>
                             </li>
                         </ul>
 
@@ -56,7 +56,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="filtering/" class="nav-link">
+                                <a rel="next" href="filtering/index.html" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -310,16 +310,13 @@ Please let me know what your experience with RNAIndel was like (even bad comment
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             </div>
             <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
+                <p>From here you can search these documents. Enter your search terms below.</p>
                 <form>
                     <div class="form-group">
                         <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
-                <div id="mkdocs-search-results"></div>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
             </div>
             <div class="modal-footer">
             </div>
@@ -370,6 +367,6 @@ Please let me know what your experience with RNAIndel was like (even bad comment
 </html>
 
 <!--
-MkDocs version : 1.1.2
-Build Date UTC : 2021-02-12 20:24:54.818512+00:00
+MkDocs version : 1.2.1
+Build Date UTC : 2021-06-16 16:02:28.885869+00:00
 -->
